@@ -61,6 +61,7 @@ export default {
 </script>
 <template>
   <AppHeader @search-terms="fetchAllStore" />
+  <AppHeader />
 
   <!-- adesso in app main scarica lo store , fai le props per le card con il v-bind da passare a suo figlio e fai un v-for su template dei films e uno sulle serie  -->
   <!-- fare registrazione sul sito dei film edcc8a8669f8819a0394b2c8f9a3038c
