@@ -1,18 +1,19 @@
 <script>
+import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import { store } from './store'
-const endpointMovie = 'https://api.themoviedb.org/3/search/movie?api_key=edcc8a8669f8819a0394b2c8f9a3038c&query=superman'
-const endpointSeries = 'https://api.themoviedb.org/3/search/tv?api_key=edcc8a8669f8819a0394b2c8f9a3038c&query=superman'
+const endpointMovie = 'https://api.themoviedb.org/3/search/movie?api_key=edcc8a8669f8819a0394b2c8f9a3038c&query='
+const endpointSeries = 'https://api.themoviedb.org/3/search/tv?api_key=edcc8a8669f8819a0394b2c8f9a3038c&query='
 import axios from 'axios';
 export default {
   name: 'App Boolflix',
   data: () => ({
     store
   }),
-  components: { AppMain },
+  components: { AppMain, AppHeader },
   methods: {
-    fetchMovieStore() {
-      (axios.get(endpointMovie).then(res => {
+    fetchMovieStore(endpoint) {
+      (axios.get(endpoint).then(res => {
         const movies = res.data.results.map(res => {
           return {
             id: res.id,
@@ -29,8 +30,8 @@ export default {
         console.log(movies)
       }))
     },
-    fetchSeriesStore() {
-      (axios.get(endpointSeries).then(res => {
+    fetchSeriesStore(endpoint) {
+      (axios.get(endpoint).then(res => {
         const series = res.data.results.map(res => {
           return {
             id: res.id,
@@ -47,9 +48,11 @@ export default {
         console.log(series)
       }))
     },
-    fetchAllStore() {
-      this.fetchMovieStore()
-      this.fetchSeriesStore()
+    fetchAllStore(event) {
+      const searchAllMovie = `${endpointMovie}${event}`
+      const searchAllSeries = `${endpointSeries}${event}`
+      this.fetchMovieStore(searchAllMovie)
+      this.fetchSeriesStore(searchAllSeries)
     }
   }
 
@@ -57,15 +60,12 @@ export default {
 }
 </script>
 <template>
-  <AppMain @click-button="fetchAllStore" />
-  <!-- fare una funzione che richiama le due fetch axios al click del bottone -->
+  <AppHeader @search-terms="fetchAllStore" />
 
+  <!-- adesso in app main scarica lo store , fai le props per le card con il v-bind da passare a suo figlio e fai un v-for su template dei films e uno sulle serie  -->
   <!-- fare registrazione sul sito dei film edcc8a8669f8819a0394b2c8f9a3038c
-      {{ ricorda che dopo il query= ci va il nome che l'utente sta cercando }}
       {{ ricorda che per le img guarda l'indirizzo su milestone 3 poi gli metti w342 e poi gli monti di fianco ciò che arriva dall'api
-    ricordati che devi inserire tutto in una costante fino al w342 e poi gli monti api }}
-    guardare bene postman
-  fare uno store con 2 array uno per i film e uno per le serie tv -->
+    ricordati che devi inserire tutto in una costante fino al w342 e poi gli monti api }}-->
 </template>
 <style lang="scss">
 @use './assets/stylesass/style.scss';

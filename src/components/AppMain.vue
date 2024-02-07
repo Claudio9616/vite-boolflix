@@ -1,13 +1,12 @@
 <script>
 import { store } from '../store';
 export default {
+    name: 'AppMain',
     data: () => ({
         store
     }),
-    emits: ['click-button']
+
 }
 </script>
-<template>
-    <button @click="$emit('click-button')"></button>
-</template>
+<template></template>
 <style></style>
