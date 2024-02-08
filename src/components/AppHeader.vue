@@ -7,6 +7,7 @@ export default {
 }
 </script>
 <template>
-    <AppForm @search-movies-seires="$emit('search-terms', $event)" />
+    <AppForm @search-movies-seires="$emit('search-terms', $event)" :placeHolder="'Inizia la ricerca'"
+        :textButton="'CERCA'" />
 </template>
 <style></style>

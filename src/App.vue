@@ -23,7 +23,7 @@ export default {
             vote: res.vote_average,
             text: res.overview,
             date: res.release_date,
-            img: res.poster_path
+            img: res.poster_path || ''
           }
         })
         store.movies = movies
@@ -41,7 +41,7 @@ export default {
             vote: res.vote_average,
             text: res.overview,
             date: res.first_air_date,
-            img: res.poster_path
+            img: res.poster_path || ''
           }
         })
         store.series = series
@@ -61,8 +61,9 @@ export default {
 </script>
 <template>
   <AppHeader @search-terms="fetchAllStore" />
-  <AppHeader />
+  <AppMain />
 
+  <!-- ricordati di centralizzare i methods -->
   <!-- adesso in app main scarica lo store , fai le props per le card con il v-bind da passare a suo figlio e fai un v-for su template dei films e uno sulle serie  -->
   <!-- fare registrazione sul sito dei film edcc8a8669f8819a0394b2c8f9a3038c
       {{ ricorda che per le img guarda l'indirizzo su milestone 3 poi gli metti w342 e poi gli monti di fianco ciò che arriva dall'api
