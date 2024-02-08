@@ -63,11 +63,7 @@ export default {
   <AppHeader @search-terms="fetchAllStore" />
   <AppMain />
 
-  <!-- ricordati di centralizzare i methods -->
-  <!-- adesso in app main scarica lo store , fai le props per le card con il v-bind da passare a suo figlio e fai un v-for su template dei films e uno sulle serie  -->
-  <!-- fare registrazione sul sito dei film edcc8a8669f8819a0394b2c8f9a3038c
-      {{ ricorda che per le img guarda l'indirizzo su milestone 3 poi gli metti w342 e poi gli monti di fianco ciò che arriva dall'api
-    ricordati che devi inserire tutto in una costante fino al w342 e poi gli monti api }}-->
+  <!-- ricordati di centralizzare i methods delle chiamate-->
 </template>
 <style lang="scss">
 @use './assets/stylesass/style.scss';

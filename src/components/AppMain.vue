@@ -10,17 +10,23 @@ export default {
 }
 </script>
 <template>
-    <main class="container my-5">
+    <main class="container border rounded-2 border-2 border-black">
         <h2 class="mb-3">MOVIES</h2>
-        <div class="border rounded-2 border-2 border-black d-flex g-4 row row-cols-2 row-cols-md-3 row-cols-lg-4">
-            <div v-for="movie in store.movies" :key="movie.id" class="col">
+        <section class="d-flex row row-cols-2 row-cols-md-3 row-cols-lg-4 flex-wrap">
+            <div v-for="movie in store.movies" :key="movie.id" class="col mb-4">
                 <CardsComponent v-bind="movie" />
             </div>
-            <h2 class="mb-3">SERIES</h2>
+        </section>
+        <!-- <section>
+            <h2 class="mb-5">SERIES</h2>
             <div v-for="serie in store.series" :key="serie.id" class="col">
                 <CardsComponent v-bind="serie" />
             </div>
-        </div>
+        </section> -->
     </main>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+    height: 100%;
+}
+</style>

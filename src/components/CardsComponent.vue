@@ -10,17 +10,31 @@ export default {
         text: String,
         date: String,
         img: String
+    },
+    computed: {
+        flags() {
+            const flags = ['it', 'en']
+            return flags.includes(this.language)
+        },
+        flagSrc() {
+            const url = new URL(`../assets/img/${this.language}.png`, import.meta.url)
+            return url.href
+        }
     }
 }
 </script>
 <template>
-    <!-- sistemare layout, fare flag -->
-    <div class="position-relative container qwe">
-        <img :src="`https://image.tmdb.org/t/p/w342${img}`" alt="">
-        <div class="position-absolute asd">
+    <!-- sistemare layout -->
+    <div class="position-relative container">
+        <img v-if="img" :src="`https://image.tmdb.org/t/p/w342${img}`" alt="">
+        <img v-else src="https://tse3.mm.bing.net/th?id=OIF.n2ItAAPqGWNyi5sl%2bPu2cw&pid=Api&P=0&h=180" alt=""
+            class="myImg">
+        <div class="asd">
             {{ title }}
             {{ originalTitle }}
             {{ language }}
+            <img v-if="flags" :src="flagSrc" :alt="language">
+            <span v-else>{{ language }}</span>
             {{ date }}
         </div>
     </div>
@@ -28,19 +42,31 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/stylesass/style.scss';
 
-.qwe {
-    max-height: 250px;
-}
-
 img {
-    max-width: 200px;
+    max-height: 250px;
     display: block;
 }
 
+.myImg {
+    height: 150px;
+}
+
 .asd {
+    display: none;
+    position: absolute;
+    height: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: chartreuse;
+    color: white;
+}
+
+.asd img {
+    width: 50px;
+}
+
+.asd:hover {
+    display: block;
+    cursor: pointer;
 }
 </style>
