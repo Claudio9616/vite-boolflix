@@ -7,15 +7,14 @@ export default {
 }
 </script>
 <template>
-    <!-- sistemare logo -->
-    <img src="https://tse2.mm.bing.net/th?id=OIP.7hBSuwqSw6Q6mTsXbdcBcgAAAA&pid=Api&P=0&h=180" alt="">
-    <AppForm @search-movies-seires="$emit('search-terms', $event)" :placeHolder="'Inizia la ricerca'" :textButton="'CERCA'"
-        class="text-end container my-4" />
+    <header class="d-flex align-items-center">
+        <h1 class="ms-2 text-white">BOOLFIX</h1>
+        <AppForm @search-movies-seires="$emit('search-terms', $event)" :placeHolder="'Inizia la ricerca'"
+            :textButton="'CERCA'" class="text-end container my-4" />
+    </header>
 </template>
 <style lang="scss" scoped>
-@use '../assets/stylesass/style.scss';
-
-img {
-    width: 200px;
+header {
+    box-shadow: 0 10px 20px;
 }
 </style>

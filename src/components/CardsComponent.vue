@@ -17,13 +17,16 @@ export default {
         flagSrc() {
             const url = new URL(`../assets/img/${this.language}.png`, import.meta.url)
             return url.href
+        },
+        votes() {
+            return Math.ceil(this.vote / 2)
         }
     }
 }
 </script>
 <template>
-    <div class="position-relative hover">
-        <img v-if="img" :src="`https://image.tmdb.org/t/p/w342${img}`" alt="" class="asd">
+    <div class="position-relative card-container">
+        <img v-if="img" :src="`https://image.tmdb.org/t/p/w342${img}`" alt="" class="img-production">
         <img v-else src="https://tse3.mm.bing.net/th?id=OIF.n2ItAAPqGWNyi5sl%2bPu2cw&pid=Api&P=0&h=180" alt=""
             class="myImg">
         <ul class="text-center">
@@ -34,7 +37,9 @@ export default {
                 <img v-if="flags" :src="flagSrc" :alt="language">
                 <span v-else>{{ language }}</span>
             </li>
-            <!-- mettere stelline -->
+            <li>
+                <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votes ? 'fa-solid' : 'fa-regular'"></i>
+            </li>
         </ul>
     </div>
 </template>
@@ -61,7 +66,11 @@ li img {
     max-width: 100px;
 }
 
-.hover:hover {
+.fa-star {
+    color: yellow;
+}
+
+.card-container:hover {
     cursor: pointer;
     overflow-y: auto;
     overflow-x: hidden;
@@ -71,7 +80,7 @@ li img {
         display: inline-block;
     }
 
-    .asd,
+    .img-production,
     .myImg {
         filter: brightness(0.2);
     }
