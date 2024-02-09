@@ -10,19 +10,19 @@ export default {
 }
 </script>
 <template>
-    <main class="container border rounded-2 border-2 border-black">
+    <main class="container">
         <h2 class="mb-3">MOVIES</h2>
         <section class="d-flex row row-cols-2 row-cols-md-3 row-cols-lg-4 flex-wrap">
             <div v-for="movie in store.movies" :key="movie.id" class="col mb-4">
                 <CardsComponent v-bind="movie" />
             </div>
         </section>
-        <!-- <section>
-            <h2 class="mb-5">SERIES</h2>
-            <div v-for="serie in store.series" :key="serie.id" class="col">
+        <h2 class="mb-5">SERIES</h2>
+        <section class="d-flex row row-cols-2 row-cols-md-3 row-cols-lg-4 flex-wrap">
+            <div v-for="serie in store.series" :key="serie.id" class="col mb-4">
                 <CardsComponent v-bind="serie" />
             </div>
-        </section> -->
+        </section>
     </main>
 </template>
 <style lang="scss" scoped>

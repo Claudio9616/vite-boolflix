@@ -17,4 +17,4 @@ export default {
         <button>{{ textButton }}</button>
     </form>
 </template>
-<style></style>
+<style lang="scss" scoped></style>
